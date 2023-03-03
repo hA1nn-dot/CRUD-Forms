@@ -37,7 +37,7 @@ namespace PruebaTecnica.Model
             document.Add(parrafoTipoEmpleado);
             document.Add(parrafoDireccion);
             document.Add(parrafoCodigoPostal);
-            foreach (Telefono telefono in EmpleadoModel.getTelefonosByIdEmpleado(empleado.IdEmpleado))
+            foreach (Telefono telefono in empleado.Telefonos)
             {
                 var parrafoTelefono = new Paragraph("Telefono :" + telefono.Numero + " Ext:  " + telefono.Extension + " Tipo: " + telefono.Tipo);
                 document.Add(parrafoTelefono);

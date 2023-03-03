@@ -26,7 +26,7 @@ namespace PruebaTecnica.View
         private string entidadFederativa;
 
         private List<Telefono> telefonos;
-
+        public Empleado() { }
         public Empleado(string nombre, string apellidoPaterno, string apellidoMaterno, string edad, string genero, string puesto, string estudios, string tipoEmpleado, string calle, string num, string cP, string entidadFederativa, List<Telefono> telefonos)
         {
             this.Nombre = nombre;
@@ -42,23 +42,6 @@ namespace PruebaTecnica.View
             this.cp = cP;
             this.EntidadFederativa = entidadFederativa;
             this.Telefonos = telefonos;
-        }
-
-        public Empleado(int idEmpleado, string nombre, string apellidoPaterno, string apellidoMaterno, string edad, string genero, string puesto, string estudios, string tipoEmpleado, string calle, string num, string cP, string entidadFederativa)
-        {
-            this.IdEmpleado = idEmpleado;
-            this.Nombre = nombre;
-            this.ApellidoPaterno = apellidoPaterno;
-            this.ApellidoMaterno = apellidoMaterno;
-            this.Edad = edad;
-            this.Genero = genero;
-            this.Puesto = puesto;
-            this.Estudios = estudios;
-            this.TipoEmpleado = tipoEmpleado;
-            this.Calle = calle;
-            this.Num = num;
-            this.cp = cP;
-            this.EntidadFederativa = entidadFederativa;
         }
 
         public void toPDFCovert(string fileName) {

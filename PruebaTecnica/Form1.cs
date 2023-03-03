@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using PruebaTecnica.Controllers;
@@ -61,25 +60,25 @@ namespace PruebaTecnica
 
         private void btnDetalleEmpleado_Click(object sender, EventArgs e)
         {
+            int idEmpleado = Int32.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
             //Crear empleado
-            Empleado empleado = new Empleado(
-                Int32.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()),
-                this.dataGridView1.CurrentRow.Cells[1].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[2].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[3].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[4].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[5].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[6].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[7].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[8].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[10].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[11].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[12].Value.ToString(),
-                this.dataGridView1.CurrentRow.Cells[13].Value.ToString()
-                );
+            Empleado empleado = new Empleado();
+            empleado.IdEmpleado = idEmpleado;
+            empleado.Nombre = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            empleado.ApellidoPaterno = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            empleado.ApellidoMaterno = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            empleado.Edad = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            empleado.Genero = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            empleado.Puesto = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            empleado.Estudios = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
+            empleado.TipoEmpleado = this.dataGridView1.CurrentRow.Cells[8].Value.ToString();
+            empleado.Calle = this.dataGridView1.CurrentRow.Cells[10].Value.ToString();
+            empleado.Num = this.dataGridView1.CurrentRow.Cells[11].Value.ToString();
+            empleado.CP = this.dataGridView1.CurrentRow.Cells[12].Value.ToString();
+            empleado.EntidadFederativa = this.dataGridView1.CurrentRow.Cells[13].Value.ToString();
+            empleado.Telefonos = EmpleadoModel.getTelefonosByIdEmpleado(idEmpleado);
             //Convertir a pdf
             empleado.toPDFCovert("Reporte.pdf");
-
             MessageBox.Show("Reporte.pdf guardado!","Reporte.pdf");
         }
     }
